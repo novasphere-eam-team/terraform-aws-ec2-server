@@ -36,3 +36,9 @@ variable "tags" {
   type    = map(string)
   default = {}
 }
+
+variable "role" {
+  description = "Role du serveur (web, monitoring...)"
+  type        = string
+  default     = "web"
+}

@@ -36,6 +36,6 @@ resource "aws_instance" "this" {
 
   tags = merge(var.tags, {
     Name = var.name
-    Role = "web"
+    Role = var.role
   })
 }
