@@ -40,10 +40,16 @@ resource "aws_instance" "this" {
   instance_type          = var.instance_type
   key_name               = var.key_name
   vpc_security_group_ids = [aws_security_group.this.id]
+  ebs_optimized          = true
 
   metadata_options {
     http_tokens   = "required"
     http_endpoint = "enabled"
+  }
+
+  # Volume racine chiffre (cle geree aws/ebs) : un snapshot vole reste illisible
+  root_block_device {
+    encrypted = true
   }
 
   tags = merge(var.tags, {
